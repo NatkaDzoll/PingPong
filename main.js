@@ -49,21 +49,24 @@ var score1 = 0;
 var score2 = 0;
 score.innerHTML = score1 + ':' + score2;
 
-	var time = 10;
+
+//кнопка старт - движение шарика
 function start() {
+		time = 10;
 	ball.style.left = (parseInt(field.offsetWidth)/2 - parseInt(ball.offsetWidth)/2) +'px';
 	ball.style.top = (field.offsetHeight/2 - ball.offsetHeight/2) + 'px';
 	
 	clickTimer = setInterval(ballMoove, time)
 	ball.speedBallX = randomDiap((-1),1);
 	ball.speedBallY = randomDiap((-1),1);
-}
-		//увеличиваем скороть через время
-			setInterval (speedNext, 5000)
-				function speedNext() {
-				 	time += 5; 
-				 }  
 
+}
+	//увеличиваем скорость через время  -------------------------- НЕ РАБОТАЕТ!!!!
+	setInterval(speedNext, 300)
+		function speedNext() {
+		 	time += 15; 
+		}  		
+//рандомное направление шарика
 function randomDiap(n,m) {
 	var numb = 0;
 	do {
@@ -72,6 +75,7 @@ function randomDiap(n,m) {
 	while (numb == 0); 
     return numb;
 }
+
 //создание ракеток
 
 function Rocket(color) {
@@ -176,6 +180,7 @@ function ballMoove() {
  		ball.speedBallY = - ball.speedBallY;
  		ball.style.top = parseInt(field.offsetHeight) - parseInt(ball.offsetHeight) + 'px';
  	}	
+ 	return false;
 }
 
 // полечениее координат элемента относительно верхнего левого угла страницы
