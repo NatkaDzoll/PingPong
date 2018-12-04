@@ -11,7 +11,7 @@ button.addEventListener('click', start);
 var field = document.createElement('div');
 field.style.position = 'relative';
 field.style.border = 'solid';
-field.style.backgroundColor = '#fff340';
+field.style.backgroundColor = '#FFF3A8';
 field.style.borderColor = 'black';
 field.style.borderWidth = '1px';
 field.style.width = '650px';
@@ -23,7 +23,7 @@ document.body.appendChild(field);
 // создание мячика
 var ball = document.createElement('div');
 ball.style.position = 'absolute';
-ball.style.backgroundColor = 'red';
+ball.style.backgroundColor = '#EB1339FF';
 ball.style.width = '30px';
 ball.style.height = '30px';
 ball.style.borderRadius = '15px';
@@ -52,7 +52,9 @@ score.innerHTML = score1 + ':' + score2;
 
 //кнопка старт - движение шарика
 function start() {
-		time = 10;
+	button.removeEventListener('click', start);
+
+	time = 10;
 	ball.style.left = (parseInt(field.offsetWidth)/2 - parseInt(ball.offsetWidth)/2) +'px';
 	ball.style.top = (field.offsetHeight/2 - ball.offsetHeight/2) + 'px';
 	
@@ -94,11 +96,11 @@ function Rocket(color) {
 		return rocket;
 	}
 }
-var rocket1 = new Rocket('#269926');
+var rocket1 = new Rocket('#268C5F');
 rocket1.rocket.style.left = '0px';
 rocket1.rocket.style.top = parseInt(field.offsetHeight)/2 - parseInt(rocket1.rocket.style.height)/2 + 'px';
 
-var rocket2 = new Rocket('#1049A9');
+var rocket2 = new Rocket('#235B8E');
 rocket2.rocket.style.left = parseInt(field.offsetWidth) - parseInt(rocket2.rocket.style.width) + 'px';
 rocket2.rocket.style.top = parseInt(field.offsetHeight)/2 - parseInt(rocket2.rocket.style.height)/2 + 'px';
 
@@ -154,6 +156,7 @@ function ballMoove() {
  		score2 += 1;
 		score.innerHTML = score1 + ':' + score2;
 		clearInterval(clickTimer);
+		button.addEventListener('click', start);
  	}
 
 //Если мяч коснулся rocket1 (левой)
@@ -167,6 +170,7 @@ function ballMoove() {
 		score1 += 1;
 		score.innerHTML = score1 + ':' + score2;
 		clearInterval(clickTimer);
+		button.addEventListener('click', start);
  	}
  	if (parseInt(ball.offsetLeft+ball.offsetWidth) > parseInt(field.offsetWidth)-parseInt(rocket2.rocket.offsetWidth)&&(ball.offsetTop + centerBall) > rocket2.rocket.offsetTop && (rocket2.rocket.offsetTop + rocket2.rocket.offsetHeight > parseInt(ball.offsetTop) + centerBall)){
  		ball.speedBallX = - ball.speedBallX;
